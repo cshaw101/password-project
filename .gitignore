@@ -1,24 +1,17 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
+# Dependency directories
+node_modules/
+# Environment files
+.env
+# Build artifacts
 /build
-
-# misc
+# Coverage reports
+/coverage
+# Editor directories
+.vscode/
+.idea/
+# Logs
+logs/
+*.log
+# OS generated files
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-node_modules
+Thumbs.db
