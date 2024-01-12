@@ -1,9 +1,12 @@
 const router = require('express').Router()
 
-router.get('/', (req, res) => {
-    console.log("users is working")
+router.post('/login', (req, res, next) => {
+    console.log("login is working")
 })
 
+router.post('/register', (req, res, next) => {
+    console.log("register is working")
+})
 
 
 

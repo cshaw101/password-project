@@ -1,8 +1,8 @@
 const router = require('express').Router()
 
 
-router.post('/', (req, res) => {
-    console.log('post is working')
+router.post('/', (req, res, next) => {
+    console.log('password post is working')
 })
 
 
