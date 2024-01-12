@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migrate": "npx knex migrate:latest",
-    "start": "node index.js",
-    "server": "nodemon index.js",
-    "rollback": "npx knex migrate:rollback"
+    "start-server": "nodemon index.js",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +21,7 @@
     "helmet": "^7.1.0",
     "knex": "^3.1.0",
     "pg": "^8.11.3",
+    "react-scripts": "^5.0.1",
     "sqlite3": "^5.1.7"
   }
 }
