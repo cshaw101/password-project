@@ -1,13 +1,28 @@
 const router = require('express').Router()
+const Users =  require('../users/user-model')
 
 router.post('/login', (req, res, next) => {
     console.log("login is working")
 })
 
-router.post('/register', (req, res, next) => {
-    console.log("register is working")
-})
-
+router.post('/register', async (req, res) => {
+    const { username, password } = req.body;
+  
+    try {
+      // Check if username already exists
+      const existingUser = await Users.getUserByUsername(username);
+      if (existingUser) {
+        return res.status(400).json({ message: 'Username already exists' });
+      }
+  
+      // Create a new user
+      const newUser = await Users.createUser(username, password);
+      res.status(201).json({ id: newUser.id, username: newUser.username });
+    } catch (err) {
+      console.error('Error during registration:', err);
+      res.status(500).json({ message: 'Registration failed' });
+    }
+  });
 
 
 module.exports = router;

@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-server": "nodemon index.js",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback"
   },
   "keywords": [],
   "author": "",

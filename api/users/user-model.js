@@ -1,17 +1,19 @@
-const db = require('./dbConfig');
+const db = require('../../data/dbConfig');
 
-class UserModel {
-  constructor() {
-    this.tableName = 'users';
-  }
-
-  async createUser(username, password) {
-    return db(this.tableName).insert({ username, password });
-  }
-
-  async getUserByUsername(username) {
-    return db(this.tableName).select().where({ username }).first();
-  }
+async function createUser(username, password) {
+  const [newUser] = await db('users').returning(['id', 'username']).insert({
+    username,
+    password,
+  });
+  return newUser;
 }
 
-module.exports = UserModel;
+
+async function getUserByUsername(username) {
+  return db('users').select().where({ username }).first();
+}
+
+module.exports = {
+  createUser,
+  getUserByUsername
+};
