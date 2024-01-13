@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const Users =  require('../users/user-model')
 
+
 router.post('/login', (req, res, next) => {
     console.log("login is working")
 })
@@ -17,7 +18,11 @@ router.post('/register', async (req, res) => {
   
       // Create a new user
       const newUser = await Users.createUser(username, password);
-      res.status(201).json({ id: newUser.id, username: newUser.username, password: newUser.password });
+      res.status(201).json({ 
+        id: newUser.id,
+        username: newUser.username,
+        password: newUser.password 
+      });
     } catch (err) {
       console.error('Error during registration:', err);
       res.status(500).json({ message: 'Registration failed' });
