@@ -1,9 +1,13 @@
 const router = require('express').Router()
 const Users =  require('../users/user-model')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const { JWT_SECRET } = require('../../secrets')
 
 router.post('/login', async (req, res, next) => {
     const { username, password } = req.body;
+
+    
 
     if (!username || !password) {
       return res.status(400).json({ message:"username and password required"})
@@ -13,7 +17,9 @@ router.post('/login', async (req, res, next) => {
       const user = await Users.getUserByUsername(username);
       if (user && bcrypt.compareSync(password, user.password)) {
         req.user = user
-        res.status(200).json({ message: `welcome, ${user.username}`})
+        
+        const token = buildToken(req.user)
+        res.status(200).json({ message: `welcome, ${user.username}`, token})
       }else {
         res.status(401).json({ message: 'invalid credentials'})
       }
@@ -26,7 +32,7 @@ router.post('/login', async (req, res, next) => {
 
 router.post('/register', async (req, res) => {
     const { username, password } = req.body;
-  
+
     try {
       // Check if username already exists
       const existingUser = await Users.getUserByUsername(username);
@@ -46,6 +52,19 @@ router.post('/register', async (req, res) => {
       res.status(500).json({ message: 'Registration failed' });
     }
   });
+
+
+
+  function buildToken(user){
+    const payload = {
+      subject: user.id,
+      username: user.username,
+    };
+    const options = {
+      expiresIn: '1d',
+    }
+    return jwt.sign(payload, JWT_SECRET, options)
+  }
 
 
 module.exports = router;
