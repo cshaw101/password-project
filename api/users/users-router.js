@@ -19,9 +19,9 @@ router.post('/login', async (req, res, next) => {
         req.user = user
         
         const token = buildToken(req.user)
-        res.status(200).json({ message: `welcome, ${user.username}`, token})
+        res.status(200).json({ message: `Welcome, ${user.username}`, token})
       }else {
-        res.status(401).json({ message: 'invalid credentials'})
+        res.status(401).json({ message: 'Username or password is incorrect' })
       }
     }catch(err) {
        console.error('Error during login', err);
