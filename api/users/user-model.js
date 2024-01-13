@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt")
 async function createUser(username, password) {
 
 const trimmedUsername = username.trim();
-
 const hashedPassword = await bcrypt.hash(password,8)
 
   const [newUser] = await db('users').returning(['id', 'username', 'password']).insert({

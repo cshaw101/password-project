@@ -1,9 +1,27 @@
 const router = require('express').Router()
 const Users =  require('../users/user-model')
+const bcrypt = require('bcrypt')
 
+router.post('/login', async (req, res, next) => {
+    const { username, password } = req.body;
 
-router.post('/login', (req, res, next) => {
-    console.log("login is working")
+    if (!username || !password) {
+      return res.status(400).json({ message:"username and password required"})
+
+    }
+    try {
+      const user = await Users.getUserByUsername(username);
+      if (user && bcrypt.compareSync(password, user.password)) {
+        req.user = user
+        res.status(200).json({ message: `welcome, ${user.username}`})
+      }else {
+        res.status(401).json({ message: 'invalid credentials'})
+      }
+    }catch(err) {
+       console.error('Error during login', err);
+       res.status(500).json({ message: 'Internal Server Error'});
+       next(err)
+    }
 })
 
 router.post('/register', async (req, res) => {
