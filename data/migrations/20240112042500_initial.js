@@ -12,7 +12,8 @@ exports.up = function (knex) {
       .createTable('passwords', function (table) {
         table.increments('id').primary();
         table.integer('user_id').unsigned().notNullable().references('id').inTable('users');
-        table.string('password').notNullable();
+        table.string('encrypted_password').notNullable();
+        table.string('website_name').notNullable();
       });
  };
   
