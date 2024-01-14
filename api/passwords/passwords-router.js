@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { createPassword } = require('./passwords-model')
+const { createPassword, getPasswordByUserId } = require('./passwords-model')
 
 
 
@@ -17,12 +17,17 @@ res.status(500).json({ message: 'Failed to add password' })
 })
 
 
+router.get('/:id', async (req, res, next) => {
+    const { id } = req.params;
 
+    try{
+        const passwords = await getPasswordByUserId(id);
+        res.status(200).json(passwords)
 
-
-
-router.get('/', async (req, res, next) => {
-    console.log('getting passwords correctly')
+    }catch(err) {
+        console.error('Error getting passwords:', err);
+        res.status(500).json({ message: 'Failed to get passwords' });
+    }
 })
 
 
