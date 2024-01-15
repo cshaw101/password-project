@@ -2,7 +2,7 @@ const router = require('express').Router()
 const Users =  require('../users/user-model')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const { JWT_SECRET } = require('../../secrets')
+const { JWT_SECRET } = require('../../secrets/index')
 
 router.post('/login', async (req, res, next) => {
     const { username, password } = req.body;
@@ -62,7 +62,7 @@ router.post('/register', async (req, res) => {
       username: user.username,
     };
     const options = {
-      expiresIn: '1d',
+      expiresIn: '1h',
     }
     return jwt.sign(payload, JWT_SECRET, options)
   }
