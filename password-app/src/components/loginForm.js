@@ -4,15 +4,56 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    // Implement login logic here (communicate with your backend)
-    console.log('Login clicked');
+  const handleLogin = async () => {
+    try {
+      console.log('Sending login request...');
+      const response = await fetch('http://localhost:9000/api/users/login' , {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Login successful:', data);
+        // Handle successful login, e.g., redirect to the main page
+      } else {
+        const errorData = await response.json();
+        console.error('Login failed:', errorData.message);
+        // Handle failed login, e.g., show an error message
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      // Handle network or other errors
+    }
+  };
+  
+  const handleRegister = async () => {
+    try {
+      console.log('Sending register request...');
+      const response = await fetch('http://localhost:9000/api/users/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Registration successful:', data);
+        // Handle successful registration, e.g., redirect to the main page
+      } else {
+        const errorData = await response.json();
+        console.error('Registration failed:', errorData.message);
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+    }
   };
 
-  const handleRegister = () => {
-    // Implement register logic here (communicate with your backend)
-    console.log('Register clicked');
-  };
 
   return (
     <div>

@@ -1,11 +1,12 @@
 require('dotenv').config();
 const express = require('express');
-
+const cors = require('cors');
 const usersRouter = require('./users/users-router')
 const passwordRouter = require('./passwords/passwords-router')
 
 const server = express()
 
+server.use(cors());
 server.use(express.json())
 
 server.use('/api/users', usersRouter)
