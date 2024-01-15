@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 const MainPage = () => {
   const [websiteName, setWebsiteName] = useState('');
   const [password, setPassword] = useState('');
-  const [passwords, setPasswords] = useState([]); // Updated state to store passwords
+  const [passwords, setPasswords] = useState([]); 
+  const [clickedWebsite, setClickedWebsite] = useState(null);
   const navigate = useNavigate();
 
   // Function to fetch passwords and update state
@@ -96,12 +97,11 @@ const MainPage = () => {
       <button onClick={handleAddPassword}>Add Password</button>
       <button onClick={handleLogout}>Log Out</button>
 
-      {/* Display passwords below */}
       <div>
         <h2>Passwords:</h2>
         {passwords.map((password) => (
-          <div key={password.id}>
-            {password.website_name}: {password.decrypted_password}
+          <div key={password.id} onClick={() => setClickedWebsite(password.id)}>
+            {password.id === clickedWebsite ? password.decrypted_password : password.website_name}
           </div>
         ))}
       </div>
