@@ -14,14 +14,14 @@ async function createPassword(user_id, website_name, password) {
         const cipher = crypto.createCipheriv(algorithm, key, Buffer.from(passwordIV, 'hex'));
         let encryptedPassword = cipher.update(password, 'utf-8', 'hex');
         encryptedPassword += cipher.final('hex');
-
-        console.log('Stored Encrypted Password:', encryptedPassword);
+        console.log('Encrypted Password:', encryptedPassword);
+        console.log('IV:', passwordIV);
 
         const [newPassword] = await db('passwords').returning(['id', 'website_name']).insert({
             user_id,
             encrypted_password: encryptedPassword,
             website_name,
-            iv: passwordIV, // was getting error because IV was not in database 
+            iv: passwordIV,
         });
 
         return newPassword;
