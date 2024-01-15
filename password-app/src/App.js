@@ -1,14 +1,17 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from "./components/loginForm";
 import MainPage from './components/mainPage';
 
 function App() {
   return (
-    <>
-      <Login />
-      <MainPage />
-    </>
-  )
+    <Router>
+      <Routes>
+  <Route path="/" element={<Login />} />
+  <Route path="/main" element={<MainPage />} />
+</Routes>
+    </Router>
+  );
 }
 
 export default App;
