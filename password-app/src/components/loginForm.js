@@ -12,40 +12,45 @@ const Login = () => {
         username,
         password,
       });
-
+  
       if (response.data) {
         console.log('Login successful:', response.data);
-        // Handle successful login, e.g., redirect to the main page
+  
+        // Save token and userId in local storage
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('userId', response.data.userId);
+  
+        // Handle successful login, 
       } else {
         console.error('Login failed:', response.data.message);
-        // Handle failed login, e.g., show an error message
+        // Handle failed login
       }
     } catch (error) {
       console.error('Error during login:', error);
-      // Handle network or other errors
     }
   };
 
-  const handleRegister = async () => {
-    try {
-      console.log('Sending register request...');
-      const response = await axios.post('http://localhost:9000/api/users/register', {
-        username,
-        password,
-      });
 
-      if (response.data) {
-        console.log('Registration successful:', response.data);
-        // Handle successful registration, e.g., redirect to the main page
-      } else {
-        console.error('Registration failed:', response.data.message);
-        // Handle failed registration, e.g., show an error message
-      }
-    } catch (error) {
-      console.error('Error during registration:', error);
-      // Handle network or other errors
+ const handleRegister = async () => {
+  try {
+    console.log('Sending register request...');
+    const response = await axios.post('http://localhost:9000/api/users/register', {
+      username,
+      password,
+    });
+
+    if (response.data) {
+      console.log('Registration successful:', response.data);
+      // Handle successful registration, 
+    } else {
+      console.error('Registration failed:', response.data.message);
+      // Handle failed registration,
     }
-  };
+  } catch (error) {
+    console.error('Error during registration:', error);
+    // Handle network or other errors
+  }
+};
 
   return (
     <div>

@@ -1,5 +1,3 @@
-// MainPage.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -9,29 +7,33 @@ const MainPage = () => {
 
   const handleAddPassword = async () => {
     try {
-      // Make API request to add password
-      const response = await axios.post('http://localhost:9000/api/passwords', {
-        user_id: 1, // Assuming you have a user ID; replace with the actual user ID
-        website_name: websiteName,
-        password: password,
-      });
+      // Retrieve token and userId from localStorage
+      const token = localStorage.getItem('token');
+      const userId = localStorage.getItem('userId');
 
-      if (response.data) {
-        console.log('Password added successfully:', response.data);
-        // Handle success, e.g., show a success message
-        console.log(`Password added for ${websiteName}`, response.data);
-      } else {
-        console.error('Failed to add password:', response.data.message);
-        // Handle failure, e.g., show an error message
-      }
+      // Make API request to save password and website
+      const response = await axios.post(
+        'http://localhost:9000/api/passwords',
+        {
+          user_id: userId,
+          website_name: websiteName,
+          password: password,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log('Password added successfully:', response.data);
     } catch (error) {
       console.error('Error adding password:', error);
-      // Handle network or other errors
     }
   };
 
   const handleLogout = () => {
-    // Perform logout functionality (e.g., redirect to login page)
+    // do logout thing
     console.log('Logged out successfully');
   };
 

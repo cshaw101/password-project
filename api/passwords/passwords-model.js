@@ -67,9 +67,6 @@ async function getPasswordByUserId(user_id) {
     }
 }
 
-//think of precautions to take so the app wont break on mess ups
-//next to do is make front end and add buttons and make sure the endpoints work with the backend
-
 
 module.exports = {
     createPassword,
