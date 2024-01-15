@@ -1,3 +1,4 @@
+// MainPage.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +10,18 @@ const MainPage = () => {
   const [clickedWebsite, setClickedWebsite] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Check if there is a token in local storage
+    const token = localStorage.getItem('token');
+    if (!token) {
+      // Redirect to the login page if there is no token
+      navigate('/');
+    } else {
+      // Fetch passwords if there is a token
+      fetchPasswords();
+    }
+  }, [navigate]);
+
   // Function to fetch passwords and update state
   const fetchPasswords = async () => {
     try {
@@ -19,10 +32,6 @@ const MainPage = () => {
       console.error('Error getting passwords:', error);
     }
   };
-
-  useEffect(() => {
-    fetchPasswords();
-  }, []); 
 
   const handleAddPassword = async () => {
     try {
