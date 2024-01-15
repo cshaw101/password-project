@@ -21,9 +21,8 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    // Fetch passwords when the component mounts
     fetchPasswords();
-  }, []); // Empty dependency array to fetch passwords only once on mount
+  }, []); 
 
   const handleAddPassword = async () => {
     try {
