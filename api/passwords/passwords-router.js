@@ -20,6 +20,10 @@ res.status(500).json({ message: 'Failed to add password' })
 router.get('/:id', async (req, res, next) => {
     const { id } = req.params;
 
+    if(!id) {
+        return res.status(400).json({ error: 'Bad Request', message: 'Invalid or missing ID' });
+    }
+
     try{
         const passwords = await getPasswordByUserId(id);
         res.status(200).json(passwords)

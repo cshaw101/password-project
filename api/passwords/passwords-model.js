@@ -21,7 +21,7 @@ async function createPassword(user_id, website_name, password) {
             user_id,
             encrypted_password: encryptedPassword,
             website_name,
-            iv: passwordIV, // Add the IV value to the database
+            iv: passwordIV, // was getting error because IV was not in database 
         });
 
         return newPassword;
