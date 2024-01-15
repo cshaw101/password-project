@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -7,21 +8,16 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       console.log('Sending login request...');
-      const response = await fetch('http://localhost:9000/api/users/login' , {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
+      const response = await axios.post('http://localhost:9000/api/users/login', {
+        username,
+        password,
       });
-  
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Login successful:', data);
+
+      if (response.data) {
+        console.log('Login successful:', response.data);
         // Handle successful login, e.g., redirect to the main page
       } else {
-        const errorData = await response.json();
-        console.error('Login failed:', errorData.message);
+        console.error('Login failed:', response.data.message);
         // Handle failed login, e.g., show an error message
       }
     } catch (error) {
@@ -29,31 +25,27 @@ const Login = () => {
       // Handle network or other errors
     }
   };
-  
+
   const handleRegister = async () => {
     try {
       console.log('Sending register request...');
-      const response = await fetch('http://localhost:9000/api/users/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
+      const response = await axios.post('http://localhost:9000/api/users/register', {
+        username,
+        password,
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Registration successful:', data);
+      if (response.data) {
+        console.log('Registration successful:', response.data);
         // Handle successful registration, e.g., redirect to the main page
       } else {
-        const errorData = await response.json();
-        console.error('Registration failed:', errorData.message);
+        console.error('Registration failed:', response.data.message);
+        // Handle failed registration, e.g., show an error message
       }
     } catch (error) {
       console.error('Error during registration:', error);
+      // Handle network or other errors
     }
   };
-
 
   return (
     <div>
