@@ -124,13 +124,13 @@ const MainPage = () => {
       <button onClick={handleLogout}>Log Out</button>
 
       <div>
-        <h2>Passwords:</h2>
-        {passwords.map((password) => (
-          <div key={password.id} onClick={() => setClickedWebsite(password.id)}>
-            {password.id === clickedWebsite ? password.decrypted_password : password.website_name}
-          </div>
-        ))}
-      </div>
+  <h2>Passwords:</h2>
+  {passwords.map((password) => (
+    <div key={password.id} onClick={() => setClickedWebsite(prevClicked => (prevClicked === password.id ? null : password.id))}>
+      {password.id === clickedWebsite ? password.decrypted_password : password.website_name}
+    </div>
+  ))}
+</div>
     </div>
   );
 };
