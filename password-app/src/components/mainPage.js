@@ -1,4 +1,3 @@
-// MainPage.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -6,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 const MainPage = () => {
   const [websiteName, setWebsiteName] = useState('');
   const [password, setPassword] = useState('');
-  const [passwords, setPasswords] = useState([]); 
+  const [passwords, setPasswords] = useState([]);
   const [clickedWebsite, setClickedWebsite] = useState(null);
+  const [loginMessage, setLoginMessage] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,9 +19,26 @@ const MainPage = () => {
     } else {
       // Fetch passwords if there is a token
       fetchPasswords();
+
+      // Check if there is a login message in local storage
+      const storedLoginMessage = localStorage.getItem('loginMessage');
+      if (storedLoginMessage) {
+        // Set the login message to state
+        setLoginMessage(storedLoginMessage);
+        // Clear the login message from local storage
+        localStorage.removeItem('loginMessage');
+      }
     }
   }, [navigate]);
 
+  // Cleanup effect to remove the message after 3 seconds
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setLoginMessage('');
+    }, 3000);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
   // Function to fetch passwords and update state
   const fetchPasswords = async () => {
     try {
@@ -79,6 +96,7 @@ const MainPage = () => {
   return (
     <div>
       <h1>Main Page</h1>
+      {loginMessage && <p>{loginMessage}</p>}
 
       <label htmlFor="websiteName">Website Name:</label>
       <input

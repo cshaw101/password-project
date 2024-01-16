@@ -17,17 +17,20 @@ const Login = () => {
   
       if (response.data) {
         console.log('Login successful:', response.data);
-  
-        // Save token and userId in local storage
+      
+        // Save token, userId, and message in local storage
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userId', response.data.userId);
-  
-        // Handle successful login,
-        navigate('/main'); 
+        localStorage.setItem('loginMessage', 'Login successful! Welcome.');
+      
+        // Handle successful login
+        navigate('/main');
       } else {
         console.error('Login failed:', response.data.message);
+        // Save error message in local storage for displaying on MainPage
+        localStorage.setItem('loginError', response.data.message);
         // Handle failed login
-      }
+      };
     } catch (error) {
       console.error('Error during login:', error);
     }
