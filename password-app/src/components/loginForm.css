@@ -1,0 +1,83 @@
+/* loginForm.css */
+
+/* Add the Playfair Display font to the existing styles */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f5; /* Set a background color for the entire container */
+}
+
+.card {
+  font-family: 'Playfair Display', serif; /* Apply the Playfair Display font */
+  background-color: #fff;
+  padding: 60px; /* Increase padding for the card */
+  border-radius: 10px; /* Increase border radius for the card */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  width: 500px; /* Increase width for the card */
+  text-align: center;
+  margin: 40px; /* Add more margin for the card */
+}
+
+h2 {
+  color: #333;
+  font-size: 30px; /* Increase font size for the heading */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px; /* Add more margin at the top of the form */
+}
+
+label {
+  margin-bottom: 16px; /* Increase margin for labels */
+  font-family: 'Playfair Display', serif; /* Apply the Playfair Display font */
+  color: #555;
+  font-size: 20px; /* Increase font size for labels */
+}
+
+input {
+  padding: 16px; /* Increase padding for input fields */
+  margin-bottom: 30px; /* Increase margin for input fields */
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Increase border radius for input fields */
+  font-family: 'Playfair Display', serif; /* Apply the Playfair Display font */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Add transition effect */
+}
+
+/* Add the focus style */
+input:focus {
+  border-color: #007bff; /* Change border color on focus */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* Add box-shadow on focus */
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 40px; /* Add more margin at the top of the button container */
+}
+
+button {
+  flex: 1;
+  margin-right: 30px; /* Increase margin between buttons */
+  padding: 30px; /* Increase padding for buttons */
+  font-size: 30px; /* Increase font size for buttons */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px; /* Increase border radius for buttons */
+  cursor: pointer;
+}
+
+button:last-child {
+  margin-right: 0;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

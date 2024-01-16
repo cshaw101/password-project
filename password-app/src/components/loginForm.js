@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import Form from 'react-bootstrap/Form';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './loginForm.css'
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isUsernameFocused, setIsUsernameFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -58,37 +65,47 @@ const Login = () => {
   }
 };
 
-  return (
-    <div>
+return (
+  <div className="card-container">
+    <div className="card">
       <h2>Login</h2>
-      <form>
-        <label>
-          Username:
-          <input
+      <Form>
+        <FloatingLabel
+          controlId="formUsername"
+          label={isUsernameFocused || username ? '' : 'Username'}
+        >
+          <Form.Control
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            onFocus={() => setIsUsernameFocused(true)}
+            onBlur={() => setIsUsernameFocused(false)}
           />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
+        </FloatingLabel>
+        <FloatingLabel
+          controlId="formPassword"
+          label={isPasswordFocused || password ? '' : 'Password'}
+        >
+          <Form.Control
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onFocus={() => setIsPasswordFocused(true)}
+            onBlur={() => setIsPasswordFocused(false)}
           />
-        </label>
-        <br />
-        <button type="button" onClick={handleLogin}>
-          Login
-        </button>
-        <button type="button" onClick={handleRegister}>
-          Register
-        </button>
-      </form>
+        </FloatingLabel>
+        <div className="button-container">
+          <Button variant="primary" size="lg" onClick={handleLogin}>
+            Login
+          </Button>
+          <Button variant="secondary" size="lg" onClick={handleRegister}>
+            Register
+          </Button>
+        </div>
+      </Form>
     </div>
-  );
+  </div>
+);
 };
 
 export default Login;
