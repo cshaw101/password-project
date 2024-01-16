@@ -1,83 +1,99 @@
-/* loginForm.css */
-
-/* Add the Playfair Display font to the existing styles */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-
-.card-container {
+.body {
+  background-image: url('../img/alex-shutin-kKvQJ6rK6S4-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5; /* Set a background color for the entire container */
+}
+
+.card-container {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 40vh;
+  box-shadow: 10px 10px 20px #002244;
+}
+
+div.card {
+  background-color: #a8d1e7;
 }
 
 .card {
-  font-family: 'Playfair Display', serif; /* Apply the Playfair Display font */
-  background-color: #fff;
-  padding: 60px; /* Increase padding for the card */
-  border-radius: 10px; /* Increase border radius for the card */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  width: 500px; /* Increase width for the card */
-  text-align: center;
-  margin: 40px; /* Add more margin for the card */
+  background-color: #a8d1e7;
+  border: 1px solid #bacdd8;
+  padding: 70px;
 }
 
-h2 {
-  color: #333;
-  font-size: 30px; /* Increase font size for the heading */
+.title {
+  color: #24315d;
+  font-size: 50px;
+  font-weight: 900;
+  align-self: center;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  margin-top: 40px; /* Add more margin at the top of the form */
+.username-text,
+.password-text {
+  color: #24315d;
+  font-size: 25px;
+  font-weight: 850;
 }
 
-label {
-  margin-bottom: 16px; /* Increase margin for labels */
-  font-family: 'Playfair Display', serif; /* Apply the Playfair Display font */
-  color: #555;
-  font-size: 20px; /* Increase font size for labels */
-}
-
-input {
-  padding: 16px; /* Increase padding for input fields */
-  margin-bottom: 30px; /* Increase margin for input fields */
-  border: 1px solid #ccc;
-  border-radius: 8px; /* Increase border radius for input fields */
-  font-family: 'Playfair Display', serif; /* Apply the Playfair Display font */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Add transition effect */
-}
-
-/* Add the focus style */
-input:focus {
-  border-color: #007bff; /* Change border color on focus */
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* Add box-shadow on focus */
+#passwordHelpBlock {
+  color: #24315d;
+  font-size: 15px;
+  font-weight: 700;
 }
 
 .button-container {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 40px; /* Add more margin at the top of the button container */
+  align-items: center;
+  margin-top: 40px;
 }
 
-button {
-  flex: 1;
-  margin-right: 30px; /* Increase margin between buttons */
-  padding: 30px; /* Increase padding for buttons */
-  font-size: 30px; /* Increase font size for buttons */
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 8px; /* Increase border radius for buttons */
-  cursor: pointer;
+.login-button,
+.register-button {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  font-weight: 850;
 }
 
-button:last-child {
-  margin-right: 0;
+.login-button.btn-primary {
+  background-color: #374785 !important;
+  font-weight: 750;
 }
 
-button:hover {
-  background-color: #0056b3;
+.register-button.btn-secondary {
+  background-color: #24315e !important;
+  font-weight: 750;
+}
+
+
+@media (max-width: 768px) {
+  .card {
+    padding: 50px; 
+  }
+
+  .title {
+    font-size: 40px; 
+  }
+
+  .username-text,
+  .password-text {
+    font-size: 20px; 
+  }
+
+  #passwordHelpBlock {
+    font-size: 12px; 
+  }
+
+  .login-button,
+  .register-button {
+    padding: 8px; 
+    margin: 8px; 
+    font-weight: 700; 
+  }
 }
