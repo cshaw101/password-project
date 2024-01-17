@@ -8,6 +8,7 @@ import './loginForm.css'
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -17,47 +18,76 @@ const Login = () => {
         username,
         password,
       });
-
-      if (response.data) {
+  
+      console.log('Response:', response.data);
+  
+      if (response.data && !response.data.error) {
+        // Login successful
         console.log('Login successful:', response.data);
-
+  
         // Save token, userId, and message in local storage
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userId', response.data.userId);
         localStorage.setItem('loginMessage', 'Login successful! Welcome.');
-
+  
         // Handle successful login
         navigate('/main');
-      } else {
-        console.error('Login failed:', response.data.message);
+      } else if (response.data && response.data.error) {
+        // Login failed
+        console.error('Login failed:', response.data.error);
+  
         // Save error message in local storage for displaying on MainPage
-        localStorage.setItem('loginError', response.data.message);
+        localStorage.setItem('loginError', response.data.error);
+  
         // Handle failed login
       }
     } catch (error) {
       console.error('Error during login:', error);
+  
+      // Check if the error response contains a message
+      if (error.response && error.response.data && error.response.data.message) {
+        // Set the error message state for displaying on the login page
+        setErrorMessage(error.response.data.message);
+      } else {
+        // Set a generic error message state for other errors
+        setErrorMessage('Error during login. Please try again.');
+      }
     }
   };
+  
 
   const handleRegister = async () => {
-
     try {
       console.log('Sending register request...');
       const response = await axios.post('http://localhost:9000/api/users/register', {
         username,
         password,
       });
-
-      if (response.data) {
+  
+      console.log('Response:', response.data);
+  
+      if (response.data && !response.data.error) {
+        // Registration successful
         console.log('Registration successful:', response.data);
         // Handle successful registration,
-      } else {
-        console.error('Registration failed:', response.data.message);
-        // Handle failed registration,
+      } else if (response.data && response.data.error) {
+        // Registration failed
+        console.error('Registration failed:', response.data.error);
+  
+        // Set error message state for displaying on the login page
+        setErrorMessage(response.data.error);
       }
     } catch (error) {
       console.error('Error during registration:', error);
-      // Handle network or other errors
+  
+      // Check if the error response contains a message
+      if (error.response && error.response.data && error.response.data.message) {
+        // Set the error message state for displaying on the login page
+        setErrorMessage(error.response.data.message);
+      } else {
+        // Set a generic error message state for other errors
+        setErrorMessage('Error during registration. Please try again.');
+      }
     }
   };
 
@@ -66,7 +96,9 @@ const Login = () => {
     <div className="card-container">
       <div className="card">
         <h2 className="title">LOGIN</h2>
+        <div> {errorMessage && <p className="error-message">{errorMessage}</p>}</div>
         <div>
+          <div> {errorMessage && <p className="error-message"></p>}</div>
         <Form.Label className="username-text" htmlFor="inputUsername">Username</Form.Label>
           <Form.Control
             type="text"
