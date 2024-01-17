@@ -40,6 +40,7 @@ const Login = () => {
   };
 
   const handleRegister = async () => {
+
     try {
       console.log('Sending register request...');
       const response = await axios.post('http://localhost:9000/api/users/register', {
@@ -82,10 +83,6 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-             <Form.Text id="passwordHelpBlock" muted>
-        Your password must be 8-20 characters long, contain letters and numbers,
-        and must not contain spaces, special characters, or emoji.
-        </Form.Text>
         </div>
         <div className="button-container">
         <Button className="login-button" variant="primary" size="lg" onClick={handleLogin}active>
