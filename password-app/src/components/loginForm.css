@@ -13,12 +13,16 @@
 .card-container {
   max-width: 500px;
   margin: auto;
-  margin-top: 40vh;
+  margin-top: 20vh;
   box-shadow: 10px 10px 20px #002244;
+  
 }
 
 div.card {
-  background-color: #a8d1e7;
+  background-color: rgba(255, 255, 255, .45);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, .50);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, .25);
 }
 
 .card {
