@@ -23,12 +23,14 @@ div.card {
   border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, .50);
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, .25);
+  backdrop-filter: blur( 5px );
 }
 
 .card {
   background-color: #a8d1e7;
   border: 1px solid #bacdd8;
   padding: 70px;
+  
 }
 
 .title {
