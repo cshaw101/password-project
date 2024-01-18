@@ -10,6 +10,7 @@
     align-items: center;
   }
   
+
   .card-container {
     max-width: 500px;
     margin: auto;
@@ -46,6 +47,13 @@
   color: #24315d;
   font-size: 25px;
   font-weight: 850;
+}
+
+
+.button-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .logOut-button,

@@ -103,6 +103,22 @@ const MainPage = () => {
     setWebsiteName('')
   }
 
+  const handleDelete = async (id) => {
+    try {
+      const token = localStorage.getItem('token');
+  
+      await axios.delete(`http://localhost:9000/api/passwords/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      // Fetch and update the list of passwords after deleting one
+      fetchPasswords();
+    } catch (error) {
+      console.error('Error deleting password:', error);
+    }
+  };
 
 
   return (
@@ -141,10 +157,12 @@ const MainPage = () => {
       <div>
   <h2>Passwords:</h2>
   {passwords.map((password) => (
-    <div key={password.id} onClick={() => setClickedWebsite(prevClicked => (prevClicked === password.id ? null : password.id))}>
-      {password.id === clickedWebsite ? password.decrypted_password : password.website_name}
-    </div>
-  ))}
+  <div key={password.id} onClick={() => setClickedWebsite(prevClicked => (prevClicked === password.id ? null : password.id))}>
+    {password.id === clickedWebsite ? password.decrypted_password : password.website_name} 
+  <Button className='logOut-button' variant="primary" size="small" onClick={() => handleDelete(password.id)}>Delete</Button>
+  </div>
+))}
+
 </div>
 </form>
 </div>

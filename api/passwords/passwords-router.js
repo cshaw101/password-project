@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const db = require('../../data/dbConfig')
 const { createPassword, getPasswordByUserId, deletePassword } = require('./passwords-model')
 
 
@@ -43,6 +44,13 @@ router.delete('/:id', async (req, res, next) => {
     }
 
     try {
+        // Check if the password exists before deleting
+        const passwordExists = await db('passwords').where({ id }).first();
+
+        if (!passwordExists) {
+            return res.status(404).json({ error: 'Not Found', message: 'Password not found' });
+        }
+
         const deletedPassword = await deletePassword(id);
         res.status(200).json(deletedPassword);
     } catch (err) {
@@ -50,7 +58,6 @@ router.delete('/:id', async (req, res, next) => {
         res.status(500).json({ message: 'Failed to delete password' });
     }
 });
-
 
 
 
