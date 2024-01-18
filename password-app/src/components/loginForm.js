@@ -104,8 +104,6 @@ const Login = () => {
         <h2 className="title">LOGIN</h2>
         <div> {errorMessage && <p className="error-message">{errorMessage}</p>}</div>
         <div>
-          <div> {errorMessage && <p className="error-message"></p>}</div>
-          
         <Form.Label className="username-text" htmlFor="inputUsername">Username</Form.Label>
           <Form.Control
             type="text"

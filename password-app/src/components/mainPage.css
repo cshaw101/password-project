@@ -1,0 +1,68 @@
+.body {
+    background-image: url('../img/alex-shutin-kKvQJ6rK6S4-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-container {
+    max-width: 500px;
+    margin: auto;
+    margin-top: 20vh;
+    box-shadow: 10px 10px 20px #002244;
+  }
+
+
+  div.card {
+    background-color: rgba(255, 255, 255, .45);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, .50);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, .25);
+    backdrop-filter: blur(5px);
+    height: 50%; 
+    overflow-y: auto;
+  }
+  
+  .card {
+    background-color: #a8d1e7;
+    border: 1px solid #bacdd8;
+    padding: 70px;
+  }
+  
+  .title {
+    color: #24315d;
+    font-size: 50px;
+    font-weight: 900;
+    align-self: center;
+  }
+  
+  .websiteName-text,
+.password-text {
+  color: #24315d;
+  font-size: 25px;
+  font-weight: 850;
+}
+
+.logOut-button,
+.password-button {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  font-weight: 850;
+}
+
+
+.logOut-button.btn-primary {
+  background-color: #374785 !important;
+  font-weight: 750;
+}
+
+.password-button.btn-primary {
+  background-color: #374785  !important;
+  font-weight: 750;
+}

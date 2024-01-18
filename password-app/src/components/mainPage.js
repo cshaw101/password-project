@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import './mainPage.css'
 
 const MainPage = () => {
   const [websiteName, setWebsiteName] = useState('');
@@ -103,13 +106,15 @@ const MainPage = () => {
 
 
   return (
-    <div>
+    <div className='body'>
+    <div className='card-container'>
+      <div className='card'>
       <form onSubmit={handleSubmit}>
-      <h1>Main Page</h1>
+      <h1 className='title'>Main Page</h1>
       {loginMessage && <p>{loginMessage}</p>}
       
-      <label htmlFor="websiteName">Website Name:</label>
-      <input
+      <Form.Label className="websiteName-text" htmlFor="websiteName">Website Name:</Form.Label>
+      <Form.Control
         type="text"
         id="websiteName"
         placeholder="Enter website name"
@@ -119,8 +124,8 @@ const MainPage = () => {
 
       <br />
 
-      <label htmlFor="password">Password:</label>
-      <input
+      <Form.Label className="password-text" htmlFor="password">Password:</Form.Label>
+      <Form.Control
         type="password"
         id="password"
         placeholder="Enter password"
@@ -129,10 +134,10 @@ const MainPage = () => {
       />
 
       <br />
-
-      <button onClick={handleAddPassword}>Add Password</button>
-      <button onClick={handleLogout}>Log Out</button>
-
+      <div className='button-container'>
+      <Button className='password-button' variant="primary" size="lg" onClick={handleAddPassword}>Add Password</Button>
+      <Button className='logOut-button' variant="primary" size="lg" onClick={handleLogout}>Log Out</Button>
+      </div>
       <div>
   <h2>Passwords:</h2>
   {passwords.map((password) => (
@@ -142,6 +147,8 @@ const MainPage = () => {
   ))}
 </div>
 </form>
+</div>
+</div>
     </div>
   );
 };
