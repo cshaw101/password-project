@@ -104,19 +104,21 @@ const Login = () => {
         <h2 className="title">LOGIN</h2>
         <div> {errorMessage && <p className="error-message">{errorMessage}</p>}</div>
         <div>
-        <Form.Label className="username-text" htmlFor="inputUsername">Username</Form.Label>
+        <Form.Label className="username-text" htmlFor="inputUsername">Username:</Form.Label>
           <Form.Control
             type="text"
             id="inputUsername"
+            placeholder="Enter Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <Form.Label className="password-text"  htmlFor="inputPassword">Password</Form.Label>
+          <Form.Label className="password-text"  htmlFor="inputPassword">Password:</Form.Label>
         </div>
         <div>
           <Form.Control
             type="password"
             id="inputPassword"
+            placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
