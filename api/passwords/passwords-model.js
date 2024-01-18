@@ -67,8 +67,23 @@ async function getPasswordByUserId(user_id) {
     }
 }
 
+async function deletePassword(passwordId) {
+    try {
+        const deletedPassword = await db('passwords')
+            .where({ id: passwordId })
+            .del()
+            .returning(['id', 'website_name']);
+
+        return deletedPassword;
+    } catch (err) {
+        console.error('Error deleting password:', err);
+        throw new Error('Failed to delete password');
+    }
+}
+
 
 module.exports = {
     createPassword,
-    getPasswordByUserId
+    getPasswordByUserId,
+    deletePassword
 };
