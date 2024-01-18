@@ -125,7 +125,7 @@ const Login = () => {
         <Button className="login-button" variant="primary" size="lg" onClick={handleLogin}active>
         Login
       </Button>
-          <Button className="register-button" variant="secondary" size="lg" onClick={handleRegister}active>
+          <Button className="register-button" variant="primary" size="lg" onClick={handleRegister}active>
             Register
           </Button>
         </div>
