@@ -9,6 +9,8 @@ function checkPasswordLength(req, res, next) {
     function checkCreds(req, res, next) {
         if (!req.body.username || !req.body.password) {
             next({ message: "Username and Password Required" })
+        }else {
+          next()
         }
     }
 

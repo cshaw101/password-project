@@ -3,9 +3,9 @@ const Users = require('./user-model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../../secrets/index');
+const { checkCreds, checkPasswordLength } = require('./users-middleware')
 
-
-router.post('/login', async (req, res, next) => {
+router.post('/login', checkCreds, checkPasswordLength, async (req, res, next) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -32,7 +32,7 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
-router.post('/register', /*checkPasswordLength, checkCreds,*/ async (req, res) => {
+router.post('/register', checkCreds, checkPasswordLength,  async (req, res) => {
   console.log('Received registration request'); 
 
   const { username, password } = req.body;
