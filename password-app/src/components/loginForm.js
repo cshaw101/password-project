@@ -89,7 +89,13 @@ const Login = () => {
         setErrorMessage('Error during registration. Please try again.');
       }
     }
+    setPassword('')
+    setUsername('')
   };
+
+
+
+
 
   return (
     <div className="body">
@@ -99,6 +105,7 @@ const Login = () => {
         <div> {errorMessage && <p className="error-message">{errorMessage}</p>}</div>
         <div>
           <div> {errorMessage && <p className="error-message"></p>}</div>
+          
         <Form.Label className="username-text" htmlFor="inputUsername">Username</Form.Label>
           <Form.Control
             type="text"

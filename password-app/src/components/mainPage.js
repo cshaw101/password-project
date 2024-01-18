@@ -94,11 +94,20 @@ const MainPage = () => {
     navigate('/');
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setPassword('')
+    setWebsiteName('')
+  }
+
+
+
   return (
     <div>
+      <form onSubmit={handleSubmit}>
       <h1>Main Page</h1>
       {loginMessage && <p>{loginMessage}</p>}
-
+      
       <label htmlFor="websiteName">Website Name:</label>
       <input
         type="text"
@@ -132,6 +141,7 @@ const MainPage = () => {
     </div>
   ))}
 </div>
+</form>
     </div>
   );
 };
