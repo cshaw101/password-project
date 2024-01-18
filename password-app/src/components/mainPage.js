@@ -76,6 +76,8 @@ const MainPage = () => {
 
       // Fetch and update the list of passwords after adding a new one
       fetchPasswords();
+      setPassword('')
+      setWebsiteName('')
       
     } catch (error) {
       console.error('Error adding password:', error);

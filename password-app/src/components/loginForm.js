@@ -28,7 +28,7 @@ const Login = () => {
         // Save token, userId, and message in local storage
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userId', response.data.userId);
-        localStorage.setItem('loginMessage', 'Login successful! Welcome.');
+        localStorage.setItem('loginMessage', `Login successful! Welcome ${username}`);
   
         // Handle successful login
         navigate('/main');
