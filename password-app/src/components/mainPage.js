@@ -170,7 +170,15 @@ const MainPage = () => {
 </div>
 </div>
     </div>
+
+    
   );
 };
 
 export default MainPage;
+
+
+//add more error handling
+//fix error messages
+//fix how passwords and website name is displayed
+//fix the background so it is always the same and scrolling down doesnt cause a bug
