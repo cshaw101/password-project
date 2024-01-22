@@ -9,6 +9,7 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [userMessage, setUserMessage] = useState('')
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -22,38 +23,33 @@ const Login = () => {
       console.log('Response:', response.data);
   
       if (response.data && !response.data.error) {
-        // Login successful
         console.log('Login successful:', response.data);
-  
-        // Save token, userId, and message in local storage
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('userId', response.data.userId);
         localStorage.setItem('loginMessage', `Login successful! Welcome ${username}`);
-  
-        // Handle successful login
+
+        setUserMessage('Login successful!');
+        resetMessages();
         navigate('/main');
       } else if (response.data && response.data.error) {
-        // Login failed
         console.error('Login failed:', response.data.error);
-  
-        // Save error message in local storage for displaying on MainPage
-        localStorage.setItem('loginError', response.data.error);
-  
-        // Handle failed login
+
+        setErrorMessage(response.data.error);
+        resetMessages();
       }
     } catch (error) {
       console.error('Error during login:', error);
-  
-      // Check if the error response contains a message
+
       if (error.response && error.response.data && error.response.data.message) {
-        // Set the error message state for displaying on the login page
         setErrorMessage(error.response.data.message);
+        resetMessages();
       } else {
-        // Set a generic error message state for other errors
         setErrorMessage('Error during login. Please try again.');
+        resetMessages();
       }
     }
   };
+
   
 
   const handleRegister = async () => {
@@ -67,30 +63,36 @@ const Login = () => {
       console.log('Response:', response.data);
   
       if (response.data && !response.data.error) {
-        // Registration successful
         console.log('Registration successful:', response.data);
-        // Handle successful registration,
+        setUserMessage('Registration successful!');
+        resetMessages();
       } else if (response.data && response.data.error) {
-        // Registration failed
         console.error('Registration failed:', response.data.error);
-  
-        // Set error message state for displaying on the login page
+
         setErrorMessage(response.data.error);
+        resetMessages();
       }
     } catch (error) {
       console.error('Error during registration:', error);
-  
-      // Check if the error response contains a message
+
       if (error.response && error.response.data && error.response.data.message) {
-        // Set the error message state for displaying on the login page
         setErrorMessage(error.response.data.message);
+        resetMessages();
       } else {
-        // Set a generic error message state for other errors
         setErrorMessage('Error during registration. Please try again.');
+        resetMessages();
       }
     }
-    setPassword('')
-    setUsername('')
+    setPassword('');
+    setUsername('');
+  };
+
+  const resetMessages = () => {
+    
+    setTimeout(() => {
+      setUserMessage('');
+      setErrorMessage('');
+    }, 4000);
   };
 
 
@@ -99,10 +101,13 @@ const Login = () => {
 
   return (
     <div className="body">
-    <div className="card-container">
-      <div className="card">
-        <h2 className="title">LOGIN</h2>
-        <div> {errorMessage && <p className="error-message">{errorMessage}</p>}</div>
+      <div className="card-container">
+        <div className="card">
+          <h2 className="title">LOGIN</h2>
+          <div className="message-container">
+            <p className={`user-message ${userMessage && 'active'}`}>{userMessage}</p>
+            <div>{errorMessage && <p className={`error-message ${errorMessage && 'active'}`}>{errorMessage}</p>}</div>
+          </div>
         <div>
         <Form.Label className="username-text" htmlFor="inputUsername">Username:</Form.Label>
           <Form.Control

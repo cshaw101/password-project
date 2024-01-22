@@ -78,6 +78,24 @@ div.card {
   font-weight: 750;
 }
 
+.message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-message,
+.error-message {
+  margin: 10px;
+  text-align: center;
+  display: none; 
+}
+
+.user-message.active,
+.error-message.active {
+  display: block; 
+}
+
 
 
 @media (max-width: 768px) {
