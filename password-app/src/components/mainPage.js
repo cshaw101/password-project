@@ -153,18 +153,18 @@ const MainPage = () => {
 
       <br />
       <div className='button-container'>
-      <Button className='password-button' variant="primary" size="lg" onClick={handleAddPassword}>Add Password</Button>
-      <Button className='logOut-button' variant="primary" size="lg" onClick={handleLogout}>Log Out</Button>
-      </div>
-      <div>
+  <Button className='password-button' variant="primary" size="lg" onClick={handleAddPassword}>Add Password</Button>
+  <Button className='logOut-button' variant="primary" size="lg" onClick={handleLogout}>Log Out</Button>
+</div>
+
+<div className='passwords-container'>
   <h2>Passwords:</h2>
   {passwords.map((password) => (
-  <div key={password.id} onClick={() => setClickedWebsite(prevClicked => (prevClicked === password.id ? null : password.id))}>
-    {password.id === clickedWebsite ? password.decrypted_password : password.website_name} 
-  <Button className='logOut-button' variant="primary" size="small" onClick={() => handleDelete(password.id)}>Delete</Button>
-  </div>
-))}
-
+    <div key={password.id} className='password-item' onClick={() => setClickedWebsite(prevClicked => (prevClicked === password.id ? null : password.id))}>
+      {password.id === clickedWebsite ? password.decrypted_password : password.website_name} 
+      <Button className='logOut-button' variant="primary" size="small" onClick={() => handleDelete(password.id)}>Delete</Button>
+    </div>
+  ))}
 </div>
 </form>
 </div>

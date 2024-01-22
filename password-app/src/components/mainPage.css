@@ -45,10 +45,19 @@
   }
   
   .websiteName-text,
-.password-text {
-  color: #24315d;
-  font-size: 25px;
-  font-weight: 850;
+  .password-text {
+    color: #24315d;
+    font-size: 25px;
+    font-weight: 850;
+  }
+  
+
+.passwords-container {
+  font-size: 30px; 
+}
+
+.password-item {
+  margin-bottom: 10px; 
 }
 
 
