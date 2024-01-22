@@ -6,8 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-server": "nodemon index.js",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback"
   },
@@ -26,9 +24,6 @@
     "jsonwebtoken": "^9.0.2",
     "knex": "^3.1.0",
     "pg": "^8.11.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
     "sqlite3": "^5.1.7"
   }
 }
