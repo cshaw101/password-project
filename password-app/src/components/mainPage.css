@@ -1,15 +1,18 @@
-.body {
-    background-image: url('../img/alex-shutin-kKvQJ6rK6S4-unsplash.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+.body-container {
+  background-image: url('../img/alex-shutin-kKvQJ6rK6S4-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-attachment: fixed;
+  overflow: auto; 
+}
+
+
 
   .card-container {
     max-width: 500px;
@@ -17,7 +20,6 @@
     margin-top: 20vh;
     box-shadow: 10px 10px 20px #002244;
   }
-
 
   div.card {
     background-color: rgba(255, 255, 255, .45);

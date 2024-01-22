@@ -124,7 +124,7 @@ const MainPage = () => {
 
 
   return (
-    <div className='body'>
+    <div className='body-container'>
     <div className='card-container'>
       <div className='card'>
       <form onSubmit={handleSubmit}>
