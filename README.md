@@ -24,49 +24,50 @@ Installation
 
 Install dependencies:
 
-cd password-manager-app
-npm install
+    cd password-manager-app
+    npm install
+ 
 
 Set up the database:
 
-npm run migrate
+    npm run migrate
 
 Run the server:
 
 bash
 
-    - npm start-server
+    npm start-server
 
-    - The app should now be running on http://localhost:9000.
+    The app should now be running on http://localhost:9000.
 
     
 Run the app:
 
-    - cd password-app
-    - npm run start
+    cd password-app
+    npm run start
     
 Usage
 ![Screenshot 2024-01-22 at 3 37 56 PM](https://github.com/cshaw101/password-project/assets/124619458/da4ca349-12ca-484c-989a-6cdaf567596c)
 
 Login
 
-    - Access the login page by navigating to http://localhost:9000.
-    - Enter your username and password to log in.
-    - Upon successful login, you will be redirected to the main page.
+    Access the login page by navigating to http://localhost:9000.
+    Enter your username and password to log in.
+    Upon successful login, you will be redirected to the main page.
 
 Registration
 
-    - If you don't have an account, click on the "Register" button on the login page.
-    - Enter a unique username and a password (must be longer than 3 characters).
-    - Click on the "Register" button to create a new account.
+    If you don't have an account, click on the "Register" button on the login page.
+    Enter a unique username and a password (must be longer than 3 characters).
+    Click on the "Register" button to create a new account.
 
 ![Screenshot 2024-01-22 at 3 38 47 PM](https://github.com/cshaw101/password-project/assets/124619458/8a399115-8358-436d-850e-a3810dd60fee)
 
 
 Adding Passwords
 
-    - On the main page, enter the website name and password in the respective input fields.
-    - Click on the "Add Password" button to securely store the password.
+    On the main page, enter the website name and password in the respective input fields.
+    Click on the "Add Password" button to securely store the password.
 
 
 ![Screenshot 2024-01-22 at 3 39 28 PM](https://github.com/cshaw101/password-project/assets/124619458/9e3eb21c-6ace-413a-8302-76b6d0b9bc6d)
@@ -75,14 +76,14 @@ Adding Passwords
 
 Viewing and Deleting Passwords
 
-    - All stored passwords are displayed on the main page.
-    - Click on a password to reveal its decrypted version.
-    - Click on the "Delete" button next to a password to remove it.
+    All stored passwords are displayed on the main page.
+    Click on a password to reveal its decrypted version.
+    Click on the "Delete" button next to a password to remove it.
 
 Logout
 
-    - Click on the "Log Out" button to log out of the application.
-    - You will be redirected to the login page.
+    Click on the "Log Out" button to log out of the application.
+    You will be redirected to the login page.
 
 Technology Stack
 
