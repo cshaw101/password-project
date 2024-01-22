@@ -1,9 +1,7 @@
 # Dependency directories
 node_modules/
-# Environment files.env
-.env
-# Secrets folder
-/secrets
+
+
 # Build artifacts
 /build
 # Coverage reports
