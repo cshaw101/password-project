@@ -1,3 +1,7 @@
+![1703822580863](https://github.com/cshaw101/password-project/assets/124619458/7d6d76b3-e3f7-4d4b-81a5-d5e97be0f130)
+
+
+
 Features
 
     - User authentication with JWT (JSON Web Tokens)
