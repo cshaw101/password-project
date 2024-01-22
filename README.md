@@ -16,9 +16,7 @@ Prerequisites
 
 Installation
 
-    Clone the repository:
-
-git clone git@github.com:cshaw101/password-project.git
+    git clone git@github.com:cshaw101/password-project.git
 
 Install dependencies:
 
