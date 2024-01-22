@@ -11,7 +11,6 @@ try {
 
 res.status(200).json(newPassword)
 }catch(err) {
-console.error('Error adding password:', err)
 res.status(500).json({ message: 'Failed to add password' })
 }
 
@@ -30,7 +29,6 @@ router.get('/:id', async (req, res, next) => {
         res.status(200).json(passwords)
 
     }catch(err) {
-        console.error('Error getting passwords:', err);
         res.status(500).json({ message: 'Failed to get passwords' });
     }
     next()

@@ -14,8 +14,7 @@ async function createPassword(user_id, website_name, password) {
         const cipher = crypto.createCipheriv(algorithm, key, Buffer.from(passwordIV, 'hex'));
         let encryptedPassword = cipher.update(password, 'utf-8', 'hex');
         encryptedPassword += cipher.final('hex');
-        console.log('Encrypted Password:', encryptedPassword);
-        console.log('IV:', passwordIV);
+       
 
         const [newPassword] = await db('passwords').returning(['id', 'website_name']).insert({
             user_id,
@@ -26,7 +25,6 @@ async function createPassword(user_id, website_name, password) {
 
         return newPassword;
     } catch (err) {
-        console.error('Error creating password:', err);
         throw new Error('Failed to create password');
     }
 }
@@ -62,7 +60,6 @@ async function getPasswordByUserId(user_id) {
 
         return decryptedPasswords;
     } catch (err) {
-        console.error('Error getting passwords by user_id:', err);
         throw new Error('Failed to get passwords');
     }
 }
@@ -76,7 +73,6 @@ async function deletePassword(passwordId) {
 
         return deletedPassword;
     } catch (err) {
-        console.error('Error deleting password:', err);
         throw new Error('Failed to delete password');
     }
 }
